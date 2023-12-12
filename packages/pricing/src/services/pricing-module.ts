@@ -10,6 +10,7 @@ import {
   PriceSetDTO,
   PricingContext,
   PricingFilters,
+  PricingRepositoryService,
   PricingTypes,
   RuleTypeDTO,
 } from "@medusajs/types"
@@ -51,7 +52,7 @@ import {
   RuleTypeService,
 } from "@services"
 import { joinerConfig } from "../joiner-config"
-import { CreatePriceListRuleValueDTO, PricingRepositoryService } from "../types"
+import { RepositoryTypes } from "@types"
 import { validatePriceListDates } from "@utils"
 
 type InjectedDependencies = {
@@ -1902,7 +1903,8 @@ export default class PricingModuleService<
       ),
     ])
 
-    const priceListRuleValuesToCreate: CreatePriceListRuleValueDTO[] = []
+    const priceListRuleValuesToCreate: RepositoryTypes.CreatePriceListRuleValueDTO[] =
+      []
 
     for (const { id, price_list, rule_type } of createdRules) {
       const ruleValues = priceRuleValues.get(
